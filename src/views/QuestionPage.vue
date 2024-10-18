@@ -1,5 +1,24 @@
+<script setup>
+import { onMounted, ref } from 'vue';
+import useAPI from '@/composables/useAPI';
+import { useRoute } from 'vue-router';
+
+
+const api = useAPI() 
+const question = ref(null)
+const route = useRoute()
+
+onMounted(async () => {
+  question.value = await api.getQuestion(route.params.id)
+})
+
+
+</script>
+
+
+
 <template>
-  <main class="flex min-h-screen items-center justify-center">
-    <h1 class="text-6xl font-thin text-slate-800">I'm Other Page</h1>
-  </main>
+  {{ question }}
+
+
 </template>
