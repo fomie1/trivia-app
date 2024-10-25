@@ -2,6 +2,8 @@
 import { onMounted, ref } from 'vue'
 import BaseTitle from '@/components/BaseTitle.vue'
 import useAPI from '@/composables/useAPI'
+import MainScore from '@/components/MainScore.vue'
+
 
 const { categories, getCategories } = useAPI()
 
@@ -13,7 +15,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <BaseTitle>TRIVIA APPLICATION</BaseTitle>
+  <BaseTitle>TRIVIA APPLICATION - <MainScore></MainScore> </BaseTitle>
   <div class="grid flex-grow grid-cols-4 gap-12 m-20">
     <RouterLink v-for="category in categories" 
     :key="category.id"
